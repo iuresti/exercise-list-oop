@@ -1,8 +1,6 @@
 package uaslp.enginering.labs.list;
 
-import uaslp.enginering.labs.model.Student;
-
-public class ArrayList {
+public class ArrayList<T> {
 
     public enum InsertPosition {
         BEFORE,
@@ -18,8 +16,8 @@ public class ArrayList {
             return currentIndex < lastIndex;
         }
 
-        public Student next() {
-            return students[currentIndex++];
+        public T next() {
+            return (T)elements[currentIndex++];
         }
 
     }
@@ -27,7 +25,7 @@ public class ArrayList {
 
     public static final int DEFAULT_SIZE = 2;
 
-    private Student[] students;
+    private Object[] elements;
     private int lastIndex;
 
     public ArrayList() {
@@ -36,21 +34,21 @@ public class ArrayList {
 
     public ArrayList(int initialSize) {
         lastIndex = 0;
-        students = new Student[initialSize];
+        elements = new Object[initialSize];
     }
 
-    public void add(Student student) {
+    public void add(T element) {
 
-        if (lastIndex == students.length) {
+        if (lastIndex == elements.length) {
             increaseArraySize();
         }
 
-        students[lastIndex++] = student;
+        elements[lastIndex++] = element;
     }
 
-    public void delete(Student student) {
+    public void delete(T element) {
         for (int index = 0; index < lastIndex; index++) {
-            if (students[index].equals(student)) {
+            if (elements[index].equals(element)) {
                 delete(index);
                 break;
             }
@@ -60,7 +58,7 @@ public class ArrayList {
     public void delete(int index) {
         if (lastIndex - index > 0 && index >= 0) {
             lastIndex--;
-            System.arraycopy(students, index + 1, students, index, lastIndex - index);
+            System.arraycopy(elements, index + 1, elements, index, lastIndex - index);
         }
     }
 
@@ -72,28 +70,28 @@ public class ArrayList {
         return lastIndex;
     }
 
-    public Student getAt(int index) {
-        return index < lastIndex ? students[index] : null;
+    public T getAt(int index) {
+        return index < lastIndex ? (T)elements[index] : null;
     }
 
-    public void insert(Student reference, Student newStudent, InsertPosition insertPosition) {
+    public void insert(T reference, T newStudent, InsertPosition insertPosition) {
 
-        if (lastIndex == students.length) {
+        if (lastIndex == elements.length) {
             increaseArraySize();
         }
 
         for (int index = 0; index < lastIndex; index++) {
-            if (students[index].equals(reference)) {
+            if (elements[index].equals(reference)) {
                 if (insertPosition.equals(InsertPosition.BEFORE)) {
                     for (int j = lastIndex; j > index; j--) {
-                        students[j] = students[j - 1];
+                        elements[j] = elements[j - 1];
                     }
-                    students[index] = newStudent;
+                    elements[index] = newStudent;
                 } else {
                     for (int j = lastIndex; j > index + 1; j--) {
-                        students[j] = students[j - 1];
+                        elements[j] = elements[j - 1];
                     }
-                    students[index + 1] = newStudent;
+                    elements[index + 1] = newStudent;
                 }
                 break;
             }
@@ -102,10 +100,10 @@ public class ArrayList {
     }
 
     private void increaseArraySize() {
-        Student[] newArray = new Student[students.length * 2];
+        Object[] newArray = new Object[elements.length * 2];
 
-        System.arraycopy(students, 0, newArray, 0, students.length);
+        System.arraycopy(elements, 0, newArray, 0, elements.length);
 
-        students = newArray;
+        elements = newArray;
     }
 }
