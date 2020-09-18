@@ -12,13 +12,14 @@ public class ArrayList {
 
     public class Iterator {
 
+        private int currentIndex;
 
         public boolean hasNext() {
-            return false;
+            return currentIndex < lastIndex;
         }
 
         public Student next() {
-            return null;
+            return students[currentIndex++];
         }
 
     }
