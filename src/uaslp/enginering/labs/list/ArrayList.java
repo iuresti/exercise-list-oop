@@ -7,6 +7,10 @@ public class ArrayList<T> {
         AFTER
     }
 
+    public void otroMetodo()  {
+        
+    }
+
 
     public class Iterator {
 

@@ -13,6 +13,7 @@ public class Main {
         group1.add(new Student("Ivan"));
         group1.add(new Student("Mario"));
         group1.add(new Student("Juan"));
+        group1.add(new Student("OOOO"));
 
         ArrayList<Student>.Iterator iterator = group1.getIterator();
 
