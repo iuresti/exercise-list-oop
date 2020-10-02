@@ -4,7 +4,8 @@ public class ArrayList<T> {
 
     public enum InsertPosition {
         BEFORE,
-        AFTER
+        AFTER,
+        MIDDLE
     }
 
 
