@@ -1,15 +1,9 @@
 package uaslp.enginering.labs.list;
 
-public class ArrayList<T> {
-
+public class LinkedList<T> {
     public enum InsertPosition {
         BEFORE,
-        AFTER,
-        MIDDLE
-    }
-
-    public void otroMetodo()  {
-        
+        AFTER
     }
 
 
@@ -33,11 +27,11 @@ public class ArrayList<T> {
     private Object[] elements;
     private int lastIndex;
 
-    public ArrayList() {
+    public LinkedList() {
         this(DEFAULT_SIZE);
     }
 
-    public ArrayList(int initialSize) {
+    public LinkedList(int initialSize) {
         lastIndex = 0;
         elements = new Object[initialSize];
     }
@@ -67,8 +61,8 @@ public class ArrayList<T> {
         }
     }
 
-    public Iterator getIterator() {
-        return new Iterator();
+    public LinkedList.Iterator getIterator() {
+        return new LinkedList.Iterator();
     }
 
     public int size() {
@@ -79,7 +73,7 @@ public class ArrayList<T> {
         return index < lastIndex ? (T)elements[index] : null;
     }
 
-    public void insert(T reference, T newStudent, InsertPosition insertPosition) {
+    public void insert(T reference, T newStudent, ArrayList.InsertPosition insertPosition) {
 
         if (lastIndex == elements.length) {
             increaseArraySize();
@@ -87,7 +81,7 @@ public class ArrayList<T> {
 
         for (int index = 0; index < lastIndex; index++) {
             if (elements[index].equals(reference)) {
-                if (insertPosition.equals(InsertPosition.BEFORE)) {
+                if (insertPosition.equals(ArrayList.InsertPosition.BEFORE)) {
                     for (int j = lastIndex; j > index; j--) {
                         elements[j] = elements[j - 1];
                     }
