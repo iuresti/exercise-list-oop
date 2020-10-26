@@ -1,19 +1,8 @@
 package uaslp.enginering.labs.list;
 
-public class ArrayList<T> {
+public class ArrayList<T> implements List<T> {
 
-    public enum InsertPosition {
-        BEFORE,
-        AFTER,
-        MIDDLE
-    }
-
-    public void otroMetodo()  {
-        
-    }
-
-
-    public class Iterator {
+    public class ArrayListIterator<T> implements Iterator<T>{
 
         private int currentIndex;
 
@@ -67,8 +56,8 @@ public class ArrayList<T> {
         }
     }
 
-    public Iterator getIterator() {
-        return new Iterator();
+    public Iterator<T> getIterator() {
+        return new ArrayListIterator<>();
     }
 
     public int size() {

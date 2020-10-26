@@ -156,7 +156,7 @@ public class ArrayListTest {
         arrayList.add(new Student("Francisco"));
 
         // When:
-        arrayList.insert(reference, new Student("Lupita"), ArrayList.InsertPosition.BEFORE);
+        arrayList.insert(reference, new Student("Lupita"), InsertPosition.BEFORE);
 
         // Then:
         assertEquals(4, arrayList.size());
@@ -177,7 +177,7 @@ public class ArrayListTest {
         arrayList.add(reference);
 
         // When:
-        arrayList.insert(reference, new Student("Lupita"), ArrayList.InsertPosition.BEFORE);
+        arrayList.insert(reference, new Student("Lupita"), InsertPosition.BEFORE);
 
         // Then:
         assertEquals(4, arrayList.size());
@@ -198,7 +198,7 @@ public class ArrayListTest {
         arrayList.add(new Student("Francisco"));
 
         // When:
-        arrayList.insert(reference, new Student("Lupita"), ArrayList.InsertPosition.BEFORE);
+        arrayList.insert(reference, new Student("Lupita"), InsertPosition.BEFORE);
 
         // Then:
         assertEquals(4, arrayList.size());
@@ -219,7 +219,7 @@ public class ArrayListTest {
         arrayList.add(new Student("Francisco"));
 
         // When:
-        arrayList.insert(reference, new Student("Lupita"), ArrayList.InsertPosition.AFTER);
+        arrayList.insert(reference, new Student("Lupita"), InsertPosition.AFTER);
 
         // Then:
         assertEquals(4, arrayList.size());
@@ -240,7 +240,7 @@ public class ArrayListTest {
         arrayList.add(reference);
 
         // When:
-        arrayList.insert(reference, new Student("Lupita"), ArrayList.InsertPosition.AFTER);
+        arrayList.insert(reference, new Student("Lupita"), InsertPosition.AFTER);
 
         // Then:
         assertEquals(4, arrayList.size());
@@ -261,7 +261,7 @@ public class ArrayListTest {
         arrayList.add(new Student("Francisco"));
 
         // When:
-        arrayList.insert(reference, new Student("Lupita"), ArrayList.InsertPosition.AFTER);
+        arrayList.insert(reference, new Student("Lupita"), InsertPosition.AFTER);
 
         // Then:
         assertEquals(4, arrayList.size());
@@ -277,7 +277,7 @@ public class ArrayListTest {
         ArrayList<Student> arrayList = new ArrayList<>();
 
         // When:
-        ArrayList<Student>.Iterator iterator = arrayList.getIterator();
+        Iterator<Student> iterator = arrayList.getIterator();
 
         // Then:
         assertNotNull(iterator);
@@ -293,7 +293,7 @@ public class ArrayListTest {
         arrayList.add(new Student("Ivan"));
 
         // When:
-        ArrayList<Student>.Iterator iterator = arrayList.getIterator();
+        Iterator<Student> iterator = arrayList.getIterator();
 
         // Then:
         assertNotNull(iterator);
