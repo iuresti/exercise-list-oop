@@ -7,7 +7,7 @@ public class ArrayList<T> implements List<T> {
         private int currentIndex;
 
         public boolean hasNext() {
-            return currentIndex < lastIndex;
+            return currentIndex < lastIndexForTheTEst;
         }
 
         public T next() {
@@ -20,28 +20,28 @@ public class ArrayList<T> implements List<T> {
     public static final int DEFAULT_SIZE = 2;
 
     private Object[] elements;
-    private int lastIndex;
+    private int lastIndexForTheTEst;
 
     public ArrayList() {
         this(DEFAULT_SIZE);
     }
 
     public ArrayList(int initialSize) {
-        lastIndex = 0;
+        lastIndexForTheTEst = 0;
         elements = new Object[initialSize];
     }
 
     public void add(T element) {
 
-        if (lastIndex == elements.length) {
+        if (lastIndexForTheTEst == elements.length) {
             increaseArraySize();
         }
 
-        elements[lastIndex++] = element;
+        elements[lastIndexForTheTEst++] = element;
     }
 
     public void delete(T element) {
-        for (int index = 0; index < lastIndex; index++) {
+        for (int index = 0; index < lastIndexForTheTEst; index++) {
             if (elements[index].equals(element)) {
                 delete(index);
                 break;
@@ -50,9 +50,9 @@ public class ArrayList<T> implements List<T> {
     }
 
     public void delete(int index) {
-        if (lastIndex - index > 0 && index >= 0) {
-            lastIndex--;
-            System.arraycopy(elements, index + 1, elements, index, lastIndex - index);
+        if (lastIndexForTheTEst - index > 0 && index >= 0) {
+            lastIndexForTheTEst--;
+            System.arraycopy(elements, index + 1, elements, index, lastIndexForTheTEst - index);
         }
     }
 
@@ -61,28 +61,28 @@ public class ArrayList<T> implements List<T> {
     }
 
     public int size() {
-        return lastIndex;
+        return lastIndexForTheTEst;
     }
 
     public T getAt(int index) {
-        return index < lastIndex ? (T)elements[index] : null;
+        return index < lastIndexForTheTEst ? (T)elements[index] : null;
     }
 
     public void insert(T reference, T newStudent, InsertPosition insertPosition) {
 
-        if (lastIndex == elements.length) {
+        if (lastIndexForTheTEst == elements.length) {
             increaseArraySize();
         }
 
-        for (int index = 0; index < lastIndex; index++) {
+        for (int index = 0; index < lastIndexForTheTEst; index++) {
             if (elements[index].equals(reference)) {
                 if (insertPosition.equals(InsertPosition.BEFORE)) {
-                    for (int j = lastIndex; j > index; j--) {
+                    for (int j = lastIndexForTheTEst; j > index; j--) {
                         elements[j] = elements[j - 1];
                     }
                     elements[index] = newStudent;
                 } else {
-                    for (int j = lastIndex; j > index + 1; j--) {
+                    for (int j = lastIndexForTheTEst; j > index + 1; j--) {
                         elements[j] = elements[j - 1];
                     }
                     elements[index + 1] = newStudent;
@@ -90,7 +90,7 @@ public class ArrayList<T> implements List<T> {
                 break;
             }
         }
-        lastIndex++;
+        lastIndexForTheTEst++;
     }
 
     private void increaseArraySize() {
